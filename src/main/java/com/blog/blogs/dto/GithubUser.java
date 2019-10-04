@@ -1,18 +1,11 @@
-package com.blog.dto;
+package com.blog.blogs.dto;
 
 public class GithubUser {
-    private String name;
     private Long id;
+    private String name;
     private String bio;
     private String avatar_url;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private String email;
 
     public Long getId() {
         return id;
@@ -20,6 +13,14 @@ public class GithubUser {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getBio() {
@@ -36,5 +37,13 @@ public class GithubUser {
 
     public void setAvatar_url(String avatar_url) {
         this.avatar_url = avatar_url;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -1,4 +1,4 @@
-package com.blog.dto;
+package com.blog.blogs.dto;
 
 public class AccessTokenDTO {
     private String client_id;

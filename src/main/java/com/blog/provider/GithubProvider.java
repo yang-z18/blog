@@ -1,8 +1,8 @@
 package com.blog.provider;
 
 import com.alibaba.fastjson.JSON;
-import com.blog.dto.AccessTokenDTO;
-import com.blog.dto.GithubUser;
+import com.blog.blogs.dto.AccessTokenDTO;
+import com.blog.blogs.dto.GithubUser;
 import okhttp3.*;
 import org.springframework.stereotype.Component;
 
@@ -37,6 +37,7 @@ public class GithubProvider {
         try {
             Response response = client.newCall(request).execute();
             String string = response.body().string();
+            System.out.println("########"+string+"#######");
             GithubUser githubUser = JSON.parseObject(string, GithubUser.class);
             return githubUser;
         } catch (IOException e) {
