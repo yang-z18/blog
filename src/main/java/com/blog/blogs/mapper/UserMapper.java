@@ -14,6 +14,9 @@ public interface UserMapper {
     @Select("select * from user where uid=#{uid}")
     User selectById(Long uid);
 
-    @Update("update user set gmtModified=#{gmtModified},uavatar_url=#{uavatar_url},uname=#{uname},token=#{token}")
-    void updateUser(@Param("updateUser") User updateUser, @Param("uid") Long uid);
+    @Update("update user set gmtModified=#{gmtModified},uavatar_url=#{uavatar_url},uname=#{uname},token=#{token} where uid=#{uid}")
+    void updateUser(User dbUser);
+
+    @Select("select * from user where token=#{token}")
+    User findByToken(String token);
 }

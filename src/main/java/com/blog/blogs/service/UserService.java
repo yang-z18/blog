@@ -9,20 +9,20 @@ import org.springframework.stereotype.Service;
 public class UserService {
     @Autowired
     private UserMapper userMapper;
-    public void createOrUpdate(User user,Long uid){
+    public void createOrUpdate(User user){
         User dbUser = userMapper.selectById(user.getUid());
-        if(dbUser==null){
-            //插入
+        if (dbUser == null) {
+            // 插入
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModified(user.getGmtCreate());
             userMapper.insertUser(user);
-        }else {
-            User updateUser = new User();
-            updateUser.setGmtModified(System.currentTimeMillis());
-            updateUser.setUavatar_url(user.getUavatar_url());
-            updateUser.setUname(user.getUname());
-            updateUser.setToken(user.getToken());
-            userMapper.updateUser(updateUser,user.getUid());
+        } else {
+            //更新
+            dbUser.setGmtModified(System.currentTimeMillis());
+            dbUser.setUavatar_url(user.getUavatar_url());
+            dbUser.setUname(user.getUname());
+            dbUser.setToken(user.getToken());
+            userMapper.updateUser(dbUser);
         }
 
     }
