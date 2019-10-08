@@ -17,17 +17,24 @@
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
         </div>
 
-        <form action="/publish" method="post">
-            <div class="form-group">
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <form action="/publish" method="post">
+                <div class="form-group">
+                <span>
                 <label for="title">博客标题:</label>
-                <input type="text" class="form-control" th:value="${btitle}" id="btitle" name="btitle" placeholder="问题标题......">
-            </div>
-            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-                <textarea class="form-control" name="bcontent" rows="3" th:text="${bcontent}"></textarea>
-            </div>
-            <input type="hidden" name="uid" th:value="${session.user.uid}">
-            <button type="submit">发布</button>
-        </form>
+                <input type="text" class="form-control" th:value="${btitle}" id="btitle" name="btitle"
+                       placeholder="博客标题......">
+                </span>
+                </div>
+                <span>
+                <textarea class="form-control" name="bcontent" rows="15" th:text="${bcontent}"></textarea>
+                <input type="hidden" name="uid" th:value="${session.user.uid}">
+                <button type="submit" class="publisn-btn">发布</button>
+                </span>
+            </form>
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+        </div>
     </div>
 </div>
 </body>
