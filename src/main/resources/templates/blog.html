@@ -6,8 +6,12 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/css/blog.css">
+    <link rel="stylesheet" href="/css/editormd.preview.min.css">
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/editormd.min.js" type="application/javascript"></script>
+    <script src="/js/lib/marked.min.js"></script>
+    <script src="/js/lib/prettify.min.js"></script>
 </head>
 <body>
 <div th:insert="~{navigation::nav}"></div>
@@ -15,14 +19,18 @@
     <div class="div-out row">
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
         </div>
-
+        <!-- 正文 -->
         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-            <div>
-                <h2 th:text="${blogDTO.btitle}">
-                </h2>
-                <p th:text="${blogDTO.bcontent}">
-                </p>
+            <h2 th:text="${blogDTO.btitle}"></h2>
+            <!--内容-->
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" id="blog-view">
+                <textarea style="display:none;" th:text="${blogDTO.bcontent}"></textarea>
             </div>
+            <script type="text/javascript">
+                $(function() {
+                    editormd.markdownToHTML("blog-view", {});
+                });
+            </script>
         </div>
 
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
