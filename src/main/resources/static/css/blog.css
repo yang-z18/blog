@@ -19,3 +19,11 @@
     margin-top: 4px;
     float: right;
 }
+.text-desc {
+    font-size: 12px;
+    font-weight: normal;
+    color: #999;
+}
+.blog-title {
+    margin-top: 25px;
+}
