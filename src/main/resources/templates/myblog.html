@@ -26,10 +26,9 @@
                     <h4 class="media-heading">
                         <a th:href="@{'/blog/'+${blogdto.bid}}" th:text="${blogdto.btitle}">haha</a>
                     </h4>
-                    <span th:text="${blogdto.uid}">ddd</span><br>
-                    <span>aaa<span>eee</span>个回复 •
-                        <span>222</span>次浏览 • 12 小时前
-                        <span>222</span></span></span>
+                    <span><span th:text="${blogdto.commentCount}"></span>个回复 •
+                        <span th:text="${blogdto.viewCount}"></span>次浏览 • 12 小时前
+                        </span></span>
                 </div>
             </div>
             <hr>

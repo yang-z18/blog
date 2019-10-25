@@ -22,8 +22,24 @@ public class BlogService {
     private BlogMapper blogMapper;
     @Autowired
     private UserMapper userMapper;
-    public void insertblog(Blog blog) {
-        blogMapper.insertblog(blog);
+    public void createOrUpdate(Blog blog) {
+        if (blog.getBid()==null){
+            //创建
+            blog.setbCreateTime(System.currentTimeMillis());
+            blog.setModifiedTime(blog.getbCreateTime());
+            blog.setLikeCount(0);
+            blog.setViewCount(0);
+            blog.setCommentCount(0);
+            blogMapper.insertblog(blog);
+        }else {
+            //更新
+            Blog updateBlog = new Blog();
+            updateBlog.setModifiedTime(System.currentTimeMillis());
+            updateBlog.setBtitle(blog.getBtitle());
+            updateBlog.setBcontent(blog.getBcontent());
+
+            blogMapper.update(updateBlog);
+        }
     }
 
     public PaginationDTO findAll(Integer page, Integer size){
@@ -46,7 +62,7 @@ public class BlogService {
         return paginationDTO;
     }
 
-    public BlogDTO getById(String bid) {
+    public BlogDTO getById(Long bid) {
         Blog blog = blogMapper.getById(bid);
         User user = userMapper.selectById(blog.getUid());
         BlogDTO blogDTO = new BlogDTO();
